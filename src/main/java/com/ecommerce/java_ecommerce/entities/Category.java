@@ -3,8 +3,8 @@ package com.ecommerce.java_ecommerce.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "categories")
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,33 +13,27 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = true, unique = true)
+    @Column(unique = true,nullable = false)
     private String slug;
 
     @Column(nullable = true)
-    private String sku;
+    private String description;
 
-    @Column(nullable = false)
     private boolean active = true;
 
-    @Column(nullable = false)
-    private float price;
+    @Column(nullable = true)
+    private long parent_id;
 
-    @Column(nullable = false)
-    private int quantity;
-
-
-    public Product(long id, String name, String slug, String sku, boolean active, float price, int quantity) {
+    public Category(long id, String name, String slug, String description, boolean active, long parent_id) {
         this.id = id;
         this.name = name;
         this.slug = slug;
-        this.sku = sku;
+        this.description = description;
         this.active = active;
-        this.price = price;
-        this.quantity = quantity;
+        this.parent_id = parent_id;
     }
 
-    public Product() {
+    public Category() {
     }
 
     public long getId() {
@@ -49,7 +43,6 @@ public class Product {
     public void setId(long id) {
         this.id = id;
     }
-
 
     public String getName() {
         return name;
@@ -67,12 +60,12 @@ public class Product {
         this.slug = slug;
     }
 
-    public String getSku() {
-        return sku;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSku(String sku) {
-        this.sku = sku;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public boolean isActive() {
@@ -83,19 +76,11 @@ public class Product {
         this.active = active;
     }
 
-    public float getPrice() {
-        return price;
+    public long getParent_id() {
+        return parent_id;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setParent_id(long parent_id) {
+        this.parent_id = parent_id;
     }
 }
