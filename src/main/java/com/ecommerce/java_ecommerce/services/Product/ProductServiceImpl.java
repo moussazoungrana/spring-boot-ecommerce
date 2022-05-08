@@ -3,11 +3,12 @@ package com.ecommerce.java_ecommerce.services.Product;
 import com.ecommerce.java_ecommerce.entities.Product;
 import com.ecommerce.java_ecommerce.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class ProductServiceImpl implements ProductService{
-
+@Service
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository $productRepository;

@@ -29,8 +29,7 @@ public class Product {
     private int quantity;
 
 
-    public Product(long id, String name, String slug, String sku, boolean active, float price, int quantity) {
-        this.id = id;
+    public Product(String name, String slug, String sku, boolean active, float price, int quantity) {
         this.name = name;
         this.slug = slug;
         this.sku = sku;
