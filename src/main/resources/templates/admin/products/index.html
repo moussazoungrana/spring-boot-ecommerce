@@ -12,7 +12,7 @@
         </div>
 
 
-        <a href="" class="btn btn-primary pull-right">Ajouter un article</a>
+        <a th:href="@{/admin/products/create}" class="btn btn-primary pull-right">Ajouter un article</a>
     </div>
 
     <div class="row">
@@ -39,34 +39,28 @@
                             </thead>
                             <tbody>
 
-                            <tr>
-                                <td>eeeeeee</td>
-                                <td>eeeee</td>
-                                <td>eeeeeeeee</td>
+                            <tr th:each="product : ${products}">
+                                <td th:text="${product.getId()}"></td>
+                                <td th:text="${product.getSku()}"></td>
+                                <td th:text="${product.getName()}"></td>
                                 <td class="text-center">
 
-                                    <span class="badge badge-info">hhhhhh</span>
+                                    <span class="badge badge-info">null</span>
 
                                 </td>
-                                <td class="text-center">
+                                <td th:text="${product.getPrice()}"></td>
+                                <td th:text="${product.getQuantity()}"></td>
 
-                                    <span class="badge badge-info">nnnn</span>
-
-                                </td>
-                                <td class="text-center">
-
-                                    <span class="badge badge-info">nnn</span>
-
-                                </td>
 
                                 <td class="text-center">
 
-                                    <span class="badge badge-success">Yes</span>
+                                    <span th:text="${product.isActive()? 'yes':'no'}" class="badge badge-info"></span>
 
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
-                                        <a href="" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a th:href="@{'/admin/products/'+${product.getId()}+'/edit'}"
+                                           class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                         <a href="javascript:void(0);"
                                            onclick="if (confirm('Voulez vous vraiment supprimer cet enregistrement ?'))
                                                {document.getElementById('delete-product-').submit();} else {return false;}"
@@ -99,24 +93,24 @@
     <script type="text/javascript">
         $('#sampleTable').DataTable({
             language: {
-                processing:     "Traitement en cours...",
-                search:         "Rechercher&nbsp;:",
-                lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
-                info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-                infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-                infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-                infoPostFix:    "",
+                processing: "Traitement en cours...",
+                search: "Rechercher&nbsp;:",
+                lengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
+                info: "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                infoEmpty: "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                infoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                infoPostFix: "",
                 loadingRecords: "Chargement en cours...",
-                zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-                emptyTable:     "Aucune donnée disponible dans le tableau",
+                zeroRecords: "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                emptyTable: "Aucune donnée disponible dans le tableau",
                 paginate: {
-                    first:      "Premier",
-                    previous:   "Pr&eacute;c&eacute;dent",
-                    next:       "Suivant",
-                    last:       "Dernier"
+                    first: "Premier",
+                    previous: "Pr&eacute;c&eacute;dent",
+                    next: "Suivant",
+                    last: "Dernier"
                 },
                 aria: {
-                    sortAscending:  ": activer pour trier la colonne par ordre croissant",
+                    sortAscending: ": activer pour trier la colonne par ordre croissant",
                     sortDescending: ": activer pour trier la colonne par ordre décroissant"
                 }
             }

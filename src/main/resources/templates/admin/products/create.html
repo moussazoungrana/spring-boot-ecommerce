@@ -16,7 +16,7 @@
             <div class="tile">
                 <h3 class="tile-title">Ajouter un article</h3>
                 <div class="tile-body">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form th:action="@{/admin/products/store}" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label class="control-label">Nom<span class="m-l-5 text-danger"> *</span></label>
@@ -24,7 +24,17 @@
                                    type="text"
                                    name="name"
                                    placeholder="Enter le nom de l'article"
-                                   value=""
+                                   th:value="${product.getName()}"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Slug<span class="m-l-5 text-danger"> *</span></label>
+                            <input class="form-control"
+                                   type="text"
+                                   name="slug"
+                                   placeholder="Enter le slug de l'article"
+                                   th:value="${product.getSlug()}"
                             >
                         </div>
                         <div class="form-group">
@@ -33,7 +43,7 @@
                                    type="text"
                                    name="sku"
                                    placeholder="Enter un sku"
-                                   value=""
+                                   th:value="${product.getSku()}"
                             >
                         </div>
                         <div class="form-group">
@@ -42,18 +52,20 @@
                                     class="form-control"
                                     rows="5"
                                     name="description"
-                                    placeholder="Entrer une description de l'article"></textarea>
+                                    placeholder="Entrer une description de l'article"
+                                    th:text="${product.getDescription()}"
+                            ></textarea>
                         </div>
-                        <div class="form-group">
+                      <!--  <div class="form-group">
                             <label class="control-label">Images</label>
                             <input class="form-control"
                                    type="file"
                                    name="images[]"
                                    multiple>
-                        </div>
+                        </div>-->
 
 
-                        <div class="row">
+                      <!--  <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Catégories</label>
@@ -63,13 +75,11 @@
                                             <option value="ee">ee</option>
 
 
-                                            <option value="ee"> ee</option>
-
                                         </optgroup>
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="form-group">
                             <label class="control-label">Prix<span class="m-l-5 text-danger"> *</span></label>
@@ -78,7 +88,7 @@
                                        type="number"
                                        name="price"
                                        placeholder="Enter le prix de l'article"
-                                       value=""
+                                       th:value="${product.getPrice()}"
                                 >
                                 <div class="input-group-append"><span class="input-group-text"></span></div>
                             </div>
@@ -89,9 +99,9 @@
                             <label class="control-label">Quantité<span class="m-l-5 text-danger"> *</span></label>
                             <input class="form-control"
                                    type="number"
-                                   name="stock_qty"
+                                   name="quantity"
                                    placeholder="Enter la quantité disponible en stock"
-                                   value=""
+                                   th:value="${product.getQuantity()}"
                             >
 
                         </div>

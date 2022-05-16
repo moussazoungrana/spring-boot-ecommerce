@@ -20,8 +20,8 @@
         </div>
         <ul class="app-menu">
             <li>
-                <a class="app-menu__item" href="">
-                    <i class="app-menu__icon fa fa-dashboard"></i>
+                <a class="app-menu__item" th:href="@{/admin}" >
+                    <i class="app-menu__icon fas fa-tachometer-alt"></i>
                     <span class="app-menu__label">Dashboard</span>
                 </a>
             </li>
@@ -38,14 +38,14 @@
                 </a>
             </li>
             <li>
-                <a class="app-menu__item" href="">
+                <a class="app-menu__item" th:href="@{/admin/categories}">
                     <i class="app-menu__icon fas fa-tags"></i>
                     <span class="app-menu__label">Catégories</span>
                 </a>
             </li>
 
             <li>
-                <a class="app-menu__item" href="">
+                <a class="app-menu__item" th:href="@{/admin/products}">
                     <i class="app-menu__icon fas fa-shopping-bag"></i>
                     <span class="app-menu__label">Articles</span>
                 </a>

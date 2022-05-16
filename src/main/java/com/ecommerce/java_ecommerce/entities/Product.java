@@ -19,6 +19,9 @@ public class Product {
     @Column(nullable = true)
     private String sku;
 
+    @Column(nullable = true)
+    private String description;
+
     @Column(nullable = false)
     private boolean active = true;
 
@@ -29,10 +32,11 @@ public class Product {
     private int quantity;
 
 
-    public Product(String name, String slug, String sku, boolean active, float price, int quantity) {
+    public Product(String name, String slug, String sku, String description, boolean active, float price, int quantity) {
         this.name = name;
         this.slug = slug;
         this.sku = sku;
+        this.description = description;
         this.active = active;
         this.price = price;
         this.quantity = quantity;
@@ -96,5 +100,13 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

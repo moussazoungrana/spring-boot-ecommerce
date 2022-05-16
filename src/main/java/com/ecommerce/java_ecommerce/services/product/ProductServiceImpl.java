@@ -2,6 +2,7 @@ package com.ecommerce.java_ecommerce.services.product;
 
 import com.ecommerce.java_ecommerce.entities.Product;
 import com.ecommerce.java_ecommerce.repositories.ProductRepository;
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
