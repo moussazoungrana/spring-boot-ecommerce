@@ -33,20 +33,20 @@
                             </thead>
                             <tbody>
 
-                            <tr>
-                                <td>eeeeeee</td>
-                                <td>eeeee</td>
-                                <td>eeeeeeeee</td>
+                            <tr th:each="category : ${categories}">
+                                <td th:text="${category.getId()}"></td>
+                                <td th:text="${category.getName()}"></td>
+                                <td th:text="${category.getParent_id()}"></td>
 
 
                                 <td class="text-center">
 
-                                    <span class="badge badge-success">Yes</span>
+                                    <span th:text="${category.isActive()? 'Yes' : 'no'}" class="badge badge-success">Yes</span>
 
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
-                                        <a href="" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a th:href="@{'/admin/categories/'+${category.getId()}+'/edit'}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                         <a href="javascript:void(0);"
                                            onclick="if (confirm('Voulez vous vraiment supprimer cet enregistrement ?'))
                                                {document.getElementById('delete-product-').submit();} else {return false;}"
