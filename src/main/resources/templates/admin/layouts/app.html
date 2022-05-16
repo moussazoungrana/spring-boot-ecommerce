@@ -1,22 +1,46 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{../static/admin/css/admin.css}">
+    <link rel="stylesheet" th:href="@{/admin/css/admin.css}">
+
+    <style>
+        .app-sidebar__user-avatar{
+            color: grey;
+        }
+        /* img{
+             width: 60px;
+             height: 60px;
+             object-fit: cover;
+         }*/
+    </style>
 
     <title>Title</title>
+    <th:block layout:fragment="extra-style"></th:block>
 
 </head>
 <body class="app sidebar-mini">
+<th:block th:replace="admin/partials/header :: header"></th:block>
+<th:block th:replace="admin/partials/sidebar :: sidebar"></th:block>
 
-    <main th:fragment="content">
-    </main>
+<main class="app-content" id="app" >
+    <th:block layout:fragment="content"></th:block>
+</main>
 
+<script th:src="@{/admin/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/admin/js/popper.min.js}"></script>
+<script th:src="@{/admin/js/bootstrap.min.js}"></script>
+<script th:src="@{/admin/js/main.js}"></script>
+<script th:src="@{/admin/js/plugins/pace.min.js}"></script>
+
+<th:block layout:fragment="extra-script"></th:block>
 </body>
 </html>

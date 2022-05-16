@@ -1,4 +1,4 @@
-package com.ecommerce.java_ecommerce.services.Product;
+package com.ecommerce.java_ecommerce.services.product;
 
 import com.ecommerce.java_ecommerce.entities.Product;
 import com.ecommerce.java_ecommerce.repositories.ProductRepository;

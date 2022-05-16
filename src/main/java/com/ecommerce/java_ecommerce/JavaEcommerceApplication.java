@@ -1,8 +1,5 @@
 package com.ecommerce.java_ecommerce;
 
-import com.ecommerce.java_ecommerce.entities.Product;
-import com.ecommerce.java_ecommerce.repositories.ProductRepository;
-import com.ecommerce.java_ecommerce.services.Product.ProductService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +11,7 @@ public class JavaEcommerceApplication {
         ApplicationContext ctx = SpringApplication.run(JavaEcommerceApplication.class, args);
 
       /*  ProductService productService = ctx.getBean(ProductService.class);
-        productService.saveProduct(new Product("produit test","produit-test","rfe",true,(float) 500.52,20)); */
+        productService.saveProduct(new product("produit test","produit-test","rfe",true,(float) 500.52,20)); */
 
     }
 

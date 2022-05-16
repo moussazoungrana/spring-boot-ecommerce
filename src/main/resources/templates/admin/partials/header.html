@@ -1,4 +1,14 @@
-<header class="app-header">
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<header class="app-header" th:fragment="header">
     <a class="app-header__logo" href="" target="_blank">Ecommerce</a>
 
     <!-- Sidebar toggle button-->
@@ -12,7 +22,7 @@
                     <a class="dropdown-item" href=""  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-sign-out fa-lg"></i> Se déconnecter
                         <form id="logout-form" action="" method="POST" class="d-none">
-                            @csrf
+
                         </form>
                     </a>
                 </li>
@@ -20,3 +30,5 @@
         </li>
     </ul>
 </header>
+</body>
+

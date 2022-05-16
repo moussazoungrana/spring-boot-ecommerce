@@ -1,7 +1,6 @@
-package com.ecommerce.java_ecommerce.services.Product;
+package com.ecommerce.java_ecommerce.services.product;
 
 import com.ecommerce.java_ecommerce.entities.Product;
-import org.springframework.stereotype.Service;
 
 
 import java.util.List;

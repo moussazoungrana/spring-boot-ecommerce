@@ -1,13 +1,56 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+      layout:decorate="/admin/layouts/app"
+      lang="fr">
 <body>
-<h1>Test</h1>
+<th:block layout:fragment="content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+            <p>Tableau de bord</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+                <div class="info">
+                    <h4>Utilisateurs</h4>
+                    <p><b>5</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small info coloured-icon"><i class="icon far fa-chart-bar fa-3x"></i>
+                <div class="info">
+                    <h4>Commandes</h4>
+                    <p><b>5</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small warning coloured-icon"><i class="icon fas fa-shopping-bag fa-3x"></i>
+                <div class="info">
+                    <h4>Articles</h4>
+                    <p><b>5</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="widget-small danger coloured-icon"><i class="icon fas fa-comment fa-3x"></i>
+                <div class="info">
+                    <h4>Message</h4>
+                    <p><b>5</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
 
 </body>
 </html>
