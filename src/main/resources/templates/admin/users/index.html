@@ -7,10 +7,10 @@
 <th:block layout:fragment="content">
     <div class="app-title">
         <div>
-            <h1><i class="fas fa-tags"></i> Catégories</h1>
-            <p>Liste de toutes les catégories</p>
+            <h1><i class="fas fa-users"></i>Utilisateurs</h1>
+            <p>Liste de tous les utilisateurs</p>
         </div>
-        <a th:href="@{/admin/categories/create}" class="btn btn-primary pull-right">Ajouter une catégorie</a>
+        <a th:href="@{/admin/users/create}" class="btn btn-primary pull-right">Ajouter un utilisateur</a>
     </div>
 
     <div class="row">
@@ -26,37 +26,42 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nom</th>
-                                <th>parent</th>
-                                <th class="text-center">active</th>
+                                <th>Prénom</th>
+                                <th>Email</th>
+                                <th>Addresse</th>
+                                <th>Téléphone</th>
+                                <th class="text-center">admin</th>
                                 <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <tr th:each="category : ${categories}">
-                                <td th:text="${category.getId()}"></td>
-                                <td th:text="${category.getName()}"></td>
-                                <td th:text="${category.getParent_id()}"></td>
-
+                            <tr th:each="user : ${users}">
+                                <td th:text="${user.getId()}"></td>
+                                <td th:text="${user.getLastname()}"></td>
+                                <td th:text="${user.getFirstname()}"></td>
+                                <td th:text="${user.getEmail()}"></td>
+                                <td th:text="${user.getAddress()}"></td>
+                                <td th:text="${user.getPhone()}"></td>
 
                                 <td class="text-center">
 
-                                    <span th:text="${category.isActive()? 'Yes' : 'no'}" class="badge badge-success">Yes</span>
+                                    <span th:text="${user.isAdmin()? 'oui' : 'non'}" class="badge badge-success">Yes</span>
 
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
-                                        <a th:href="@{'/admin/categories/'+${category.getId()}+'/edit'}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a th:href="@{'/admin/users/'+${user.getId()}+'/edit'}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                         <a href="javascript:void(0);"
                                            onclick="if (confirm('Voulez vous vraiment supprimer cet enregistrement ?'))
-                                               {document.getElementById('delete-product-').submit();} else {return false;}"
+                                               {document.getElementById('delete-user-').submit();} else {return false;}"
                                            class="btn btn-sm btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
                                     <form action=""
                                           method="POST"
-                                          id="delete-product-" class="d-none">
+                                          id="delete-user-" class="d-none">
 
                                     </form>
                                 </td>
