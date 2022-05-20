@@ -12,29 +12,29 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private ProductRepository $productRepository;
+    private ProductRepository productRepository;
 
     public List<Product> getAll() {
-        return $productRepository.findAll();
+        return productRepository.findAll();
     }
 
     public Product findProductById(Long id) {
-        return $productRepository.findById(id).get();
+        return productRepository.findById(id).get();
     }
 
     public Product saveProduct(Product product) {
-        return $productRepository.save(product);
+        return productRepository.save(product);
     }
 
     public Product updateProduct(Product product) {
-        return $productRepository.save(product);
+        return productRepository.save(product);
     }
 
     public Boolean deleteProduct(Long id) {
         if (this.findProductById(id) == null) {
             return false;
         }
-        $productRepository.deleteById(id);
+        productRepository.deleteById(id);
         return true;
     }
 }

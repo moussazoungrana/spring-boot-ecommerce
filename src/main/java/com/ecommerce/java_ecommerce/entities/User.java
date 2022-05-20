@@ -3,11 +3,13 @@ package com.ecommerce.java_ecommerce.entities;
 import javax.persistence.*;
 
 
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "firstname", nullable = false)
     private String firstname;
 
 
