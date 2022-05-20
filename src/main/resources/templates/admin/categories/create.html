@@ -52,7 +52,8 @@
                                 <div class="form-group">
                                     <label class="control-label">Catégorie parente</label>
                                     <select class="form-control" name="parent_id" id="demoSelect">
-                                        <optgroup label="Sélectionner les catégories">
+                                        <optgroup label="Sélectionner la catégorie parente">
+                                            <option value="">Root</option>
                                             <option th:each="cat :${categories}" th:value="${cat.getId()}" th:text="${cat.getName()}"></option>
                                         </optgroup>
                                     </select>

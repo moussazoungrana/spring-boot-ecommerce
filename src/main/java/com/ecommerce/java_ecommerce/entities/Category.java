@@ -1,6 +1,7 @@
 package com.ecommerce.java_ecommerce.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -13,7 +14,7 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String slug;
 
     @Column(nullable = true)
@@ -24,8 +25,21 @@ public class Category {
     @Column(nullable = true)
     private long parent_id;
 
-    public Category(long id, String name, String slug, String description, boolean active, long parent_id) {
-        this.id = id;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<Product> products;
+
+    /*
+    @OneToMany(targetEntity = Category.class, mappedBy = "parent")
+    private List<Category> children;
+
+    @ManyToOne(targetEntity = Category.class)
+    @JoinColumn(name = "parent_id", nullable = true)
+    private Category parent;
+
+     */
+
+    public Category(String name, String slug, String description, boolean active, long parent_id) {
         this.name = name;
         this.slug = slug;
         this.description = description;
@@ -83,4 +97,36 @@ public class Category {
     public void setParent_id(long parent_id) {
         this.parent_id = parent_id;
     }
+
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+    /*
+
+    public List<Category> getChildren() {
+        return children;
+    }
+
+    public void setChildren(Category children) {
+        this.children.add(children);
+    }
+
+    public Category getParent() {
+        return parent;
+    }
+
+    public void setParent(Category parent) {
+        this.parent = parent;
+    }
+
+     */
 }

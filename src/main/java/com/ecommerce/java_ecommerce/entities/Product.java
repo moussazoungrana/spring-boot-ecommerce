@@ -1,6 +1,7 @@
 package com.ecommerce.java_ecommerce.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -30,6 +31,14 @@ public class Product {
 
     @Column(nullable = false)
     private int quantity;
+
+    @ManyToMany(targetEntity = Category.class,cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "category_products",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private List<Category> categories;
 
 
     public Product(String name, String slug, String sku, String description, boolean active, float price, int quantity) {
@@ -108,5 +117,17 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public void addCategory(Category category){
+        this.categories.add(category);
     }
 }

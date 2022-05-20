@@ -45,7 +45,9 @@
                                 <td th:text="${product.getName()}"></td>
                                 <td class="text-center">
 
-                                    <span class="badge badge-info">null</span>
+                                    <th:block th:each="category : ${product.getCategories()}">
+                                    <span th:text="${category.getName()}" class="badge badge-info"></span>
+                                    </th:block>
 
                                 </td>
                                 <td th:text="${product.getPrice()}"></td>
@@ -62,6 +64,7 @@
                                         <a th:href="@{'/admin/products/'+${product.getId()}+'/edit'}"
                                            class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                         <a href="javascript:void(0);"
+
                                            onclick="if (confirm('Voulez vous vraiment supprimer cet enregistrement ?'))
                                                {document.getElementById('delete-product-').submit();} else {return false;}"
                                            class="btn btn-sm btn-danger">
@@ -70,7 +73,8 @@
                                     </div>
                                     <form action=""
                                           method="POST"
-                                          id="delete-product-" class="d-none">
+                                          th:id="'delete-product-'+${product.getId()}"
+                                             class="d-none">
 
                                     </form>
                                 </td>
