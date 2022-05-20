@@ -25,6 +25,19 @@ public class User {
     @Column(name = "phone", nullable = true)
     private String phone;
 
+    public User(String firstname, String lastname, String email, String password, String address, String phone) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    public User(){
+
+    }
+
 
     public long getId() {
         return id;
@@ -81,19 +94,5 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    public User(String firstname, String lastname, String email, String password, String address, String phone) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.address = address;
-        this.phone = phone;
-    }
-
-    public User(){
-
-    }
-
 
 }
