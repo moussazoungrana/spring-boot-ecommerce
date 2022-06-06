@@ -77,6 +77,8 @@
                                 <input class="form-control"
                                        type="number"
                                        name="price"
+                                       step="0.01"
+                                       min="1"
                                        placeholder="Enter le prix de l'article"
                                        th:value="${product.getPrice()}"
                                 >

@@ -26,13 +26,15 @@ public class UserController {
     }
 
     @PostMapping("/store")
-    public String store(@ModelAttribute User user) {
+    public String store(@ModelAttribute User user, @RequestParam(required = false) String is_admin) {
+        user.setAdmin(is_admin != null);
         userService.saveUser(user);
         return "redirect:/admin/users";
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute User user) {
+    public String update(@ModelAttribute User user, @RequestParam(required = false) String is_admin) {
+        user.setAdmin(is_admin != null);
         userService.updateUser(user);
         return "redirect:/admin/users";
     }
@@ -43,7 +45,6 @@ public class UserController {
         model.addAttribute("user", user);
         return "admin/users/edit";
     }
-
 
 
 }
