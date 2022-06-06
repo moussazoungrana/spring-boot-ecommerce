@@ -36,7 +36,10 @@
                             <tr th:each="category : ${categories}">
                                 <td th:text="${category.getId()}"></td>
                                 <td th:text="${category.getName()}"></td>
-                                <td th:text="${category.getParent_id()}"></td>
+                                <td>
+                                    <span th:if="${category.getParent() != null}" th:text="${category.getParent().getName()}"></span>
+                                    <span th:unless="${category.getParent()}">Principale</span>
+                                </td>
 
 
                                 <td class="text-center">

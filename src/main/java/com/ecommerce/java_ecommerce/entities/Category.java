@@ -14,7 +14,7 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = true)
     private String slug;
 
     @Column(nullable = true)
@@ -22,29 +22,22 @@ public class Category {
 
     private boolean active = true;
 
-    @Column(nullable = true)
-    private long parent_id;
-
-
     @ManyToMany(mappedBy = "categories")
     private List<Product> products;
-
-    /*
-    @OneToMany(targetEntity = Category.class, mappedBy = "parent")
-    private List<Category> children;
 
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "parent_id", nullable = true)
     private Category parent;
 
-     */
+    @OneToMany(targetEntity = Category.class, mappedBy = "parent")
+    private List<Category> children;
 
-    public Category(String name, String slug, String description, boolean active, long parent_id) {
+
+    public Category(String name, String slug, String description, boolean active) {
         this.name = name;
         this.slug = slug;
         this.description = description;
         this.active = active;
-        this.parent_id = parent_id;
     }
 
     public Category() {
@@ -90,15 +83,6 @@ public class Category {
         this.active = active;
     }
 
-    public long getParent_id() {
-        return parent_id;
-    }
-
-    public void setParent_id(long parent_id) {
-        this.parent_id = parent_id;
-    }
-
-
     public List<Product> getProducts() {
         return products;
     }
@@ -110,14 +94,14 @@ public class Category {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
-    /*
+
 
     public List<Category> getChildren() {
         return children;
     }
 
-    public void setChildren(Category children) {
-        this.children.add(children);
+    public void setChildren(List<Category> children) {
+        this.children = children;
     }
 
     public Category getParent() {
@@ -127,6 +111,4 @@ public class Category {
     public void setParent(Category parent) {
         this.parent = parent;
     }
-
-     */
 }

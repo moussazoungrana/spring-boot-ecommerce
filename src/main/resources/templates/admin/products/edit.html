@@ -60,10 +60,10 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="control-label">Catégories</label>
-                                    <select th:selected="${product.getCategories()}"  class="form-control" name="categories[]" id="demoSelect" multiple="">
+                                    <select  class="form-control" name="categories[]" id="demoSelect" multiple="">
                                         <optgroup label="Sélectionner les catégories">
                                             <option th:each="cat :${categories}" th:value="${cat.getId()}"
-                                                    th:text="${cat.getName()}"></option>
+                                                 th:selected="${product.getCategories().contains(cat)}"   th:text="${cat.getName()}"></option>
                                         </optgroup>
                                     </select>
 
