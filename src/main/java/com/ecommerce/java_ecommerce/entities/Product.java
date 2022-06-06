@@ -40,6 +40,9 @@ public class Product {
     )
     private List<Category> categories;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<Media> media;
+
 
     public Product(String name, String slug, String sku, String description, boolean active, float price, int quantity) {
         this.name = name;
@@ -129,5 +132,13 @@ public class Product {
 
     public void addCategory(Category category){
         this.categories.add(category);
+    }
+
+    public List<Media> getMedia() {
+        return media;
+    }
+
+    public void setMedia(List<Media> media) {
+        this.media = media;
     }
 }

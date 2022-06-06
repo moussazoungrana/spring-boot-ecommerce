@@ -29,15 +29,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label">Slug<span class="m-l-5 text-danger"> *</span></label>
-                            <input class="form-control"
-                                   type="text"
-                                   name="slug"
-                                   placeholder="Enter le slug de l'article"
-                                   th:value="${product.getSlug()}"
-                            >
-                        </div>
-                        <div class="form-group">
                             <label class="control-label">SKU</label>
                             <input class="form-control"
                                    type="text"
@@ -109,7 +100,9 @@
                                 <label> Afficher dans la boutique
                                     <input type="checkbox"
                                            name="active"
-                                           checked
+                                           th:checked="${product.isActive()}"
+
+
                                     >
                                     <span class="button-indecator"></span>
                                 </label>

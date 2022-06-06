@@ -2,11 +2,13 @@ package com.ecommerce.java_ecommerce.services.product;
 
 import com.ecommerce.java_ecommerce.entities.Product;
 import com.ecommerce.java_ecommerce.repositories.ProductRepository;
+import com.github.slugify.Slugify;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -23,10 +25,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     public Product saveProduct(Product product) {
-        return productRepository.save(product);
+        Product saveProduct = productRepository.save(product);
+        Slugify slg = new Slugify();
+        saveProduct.setSlug(slg.slugify(saveProduct.getName()) + "-" + saveProduct.getId());
+        return productRepository.save(saveProduct);
     }
 
     public Product updateProduct(Product product) {
+        Slugify slg = new Slugify();
+        product.setSlug(slg.slugify(product.getName()) + "-" + product.getId());
         return productRepository.save(product);
     }
 

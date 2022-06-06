@@ -32,13 +32,15 @@ public class ProductController {
     }
 
     @PostMapping("/store")
-    public String store(@ModelAttribute Product product) {
+    public String store(@ModelAttribute Product product,@RequestParam(required = false) String active) {
+        product.setActive(active != null);
         productService.saveProduct(product);
         return "redirect:/admin/products";
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute Product product) {
+    public String update(@ModelAttribute Product product,@RequestParam(required = false) String active) {
+       product.setActive(active != null);
         productService.updateProduct(product);
         return "redirect:/admin/products";
     }

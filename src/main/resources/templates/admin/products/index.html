@@ -32,7 +32,7 @@
                                 <th class="text-center"> Catégories</th>
                                 <th>Prix</th>
                                 <th>Quantité</th>
-                                <th class="text-center">active</th>
+                                <th class="text-center">Status</th>
                                 <th style="width:100px; min-width:100px;" class="text-center text-danger"><i
                                         class="fa fa-bolt"> </i></th>
                             </tr>
@@ -56,7 +56,7 @@
 
                                 <td class="text-center">
 
-                                    <span th:text="${product.isActive()? 'yes':'no'}" class="badge badge-info"></span>
+                                    <span th:text="${product.isActive()? 'actif':'inactif'}" th:class="${product.isActive()? 'badge badge-info':'badge badge-danger'}"></span>
 
                                 </td>
                                 <td class="text-center">

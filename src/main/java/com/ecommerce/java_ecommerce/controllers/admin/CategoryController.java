@@ -27,13 +27,15 @@ public class CategoryController {
     }
 
     @PostMapping("/store")
-    public String store(@ModelAttribute Category category) {
+    public String store(@ModelAttribute Category category,@RequestParam(required = false) String active) {
+        category.setActive(active != null);
         categoryService.saveCategory(category);
         return "redirect:/admin/categories";
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute Category category) {
+    public String update(@ModelAttribute Category category,@RequestParam(required = false) String active) {
+        category.setActive(active != null);
         categoryService.updateCategory(category);
         return "redirect:/admin/categories";
     }

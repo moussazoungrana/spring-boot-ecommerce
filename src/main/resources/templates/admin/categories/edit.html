@@ -70,7 +70,7 @@
                                 <label> Status de la catégorie
                                     <input type="checkbox"
                                            name="active"
-                                           checked
+                                           th:checked="${category.isActive()}"
                                     >
                                     <span class="button-indecator"></span>
                                 </label>

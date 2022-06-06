@@ -16,7 +16,7 @@
             <div class="tile">
                 <h3 class="tile-title">Ajouter un utilisateur</h3>
                 <div class="tile-body">
-                    <form th:action="" method="get" enctype="multipart/form-data">
+                    <form th:action="@{/admin/users/update}" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
                             <label class="control-label">Nom<span class="m-l-5 text-danger"> *</span></label>

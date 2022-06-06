@@ -41,7 +41,7 @@
 
                                 <td class="text-center">
 
-                                    <span th:text="${category.isActive()? 'Yes' : 'no'}" class="badge badge-success">Yes</span>
+                                    <span th:text="${category.isActive()? 'actif':'inactif'}" th:class="${category.isActive()? 'badge badge-info':'badge badge-danger'}"></span>
 
                                 </td>
                                 <td class="text-center">
