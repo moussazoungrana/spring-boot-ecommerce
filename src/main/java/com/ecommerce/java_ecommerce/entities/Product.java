@@ -14,13 +14,13 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = true, unique = true)
+    @Column(nullable = true, unique = true, columnDefinition = "MEDIUMTEXT")
     private String slug;
 
     @Column(nullable = true)
     private String sku;
 
-    @Column(nullable = true)
+    @Column(nullable = true, columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
@@ -32,7 +32,7 @@ public class Product {
     @Column(nullable = false)
     private int quantity;
 
-    @ManyToMany(targetEntity = Category.class,cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Category.class, cascade = CascadeType.ALL)
     @JoinTable(
             name = "category_products",
             joinColumns = @JoinColumn(name = "product_id"),
@@ -130,7 +130,7 @@ public class Product {
         this.categories = categories;
     }
 
-    public void addCategory(Category category){
+    public void addCategory(Category category) {
         this.categories.add(category);
     }
 
@@ -140,5 +140,9 @@ public class Product {
 
     public void setMedia(List<Media> media) {
         this.media = media;
+    }
+
+    public void addMedia(Media media){
+        this.media.add(media);
     }
 }

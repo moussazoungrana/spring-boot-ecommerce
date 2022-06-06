@@ -14,10 +14,10 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
-    @Column(unique = true, nullable = true)
+    @Column(unique = true, nullable = true, columnDefinition = "MEDIUMTEXT")
     private String slug;
 
-    @Column(nullable = true)
+    @Column(nullable = true, columnDefinition = "TEXT")
     private String description;
 
     private boolean active = true;

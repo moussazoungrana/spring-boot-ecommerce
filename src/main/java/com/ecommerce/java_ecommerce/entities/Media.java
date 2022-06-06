@@ -10,7 +10,7 @@ public class Media {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,columnDefinition = "LONGTEXT")
     private String path;
 
     @ManyToOne(cascade = CascadeType.ALL)
