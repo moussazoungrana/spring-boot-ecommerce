@@ -6,8 +6,8 @@ public class CartItem {
 
     private Long code;
     private Product product;
-    private int quantity;
-    private float subTotal;
+    private int quantity = 0;
+    private float subTotal = 0;
 
     public CartItem(Product product, int quantity) {
         this.product = product;
@@ -16,7 +16,6 @@ public class CartItem {
 
     public CartItem(Product product) {
         this.product = product;
-       // this.quantity = 0;
     }
 
     public CartItem(){
@@ -48,10 +47,21 @@ public class CartItem {
     }
 
     public float getSubTotal() {
-        return this.product.getPrice() * this.quantity;
+        this.subTotal = this.product.getPrice() * this.quantity;
+        return this.subTotal;
     }
 
     public void setSubTotal(float subTotal) {
         this.subTotal = subTotal;
+    }
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "code=" + this.getCode() +
+                ", product=" + this.getProduct() +
+                ", quantity=" + this.getQuantity() +
+                ", subTotal=" + this.getSubTotal() +
+                '}';
     }
 }

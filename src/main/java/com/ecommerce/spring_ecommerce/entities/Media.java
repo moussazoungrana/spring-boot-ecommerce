@@ -37,6 +37,10 @@ public class Media {
         return path;
     }
 
+    public String getFullPath() {
+        return "/uploads/products/"+path;
+    }
+
     public void setPath(String path) {
         this.path = path;
     }
@@ -48,4 +52,5 @@ public class Media {
     public void setProduct(Product product) {
         this.product = product;
     }
+
 }

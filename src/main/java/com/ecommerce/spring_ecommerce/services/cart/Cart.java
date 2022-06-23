@@ -7,8 +7,8 @@ import java.util.Objects;
 
 public class Cart {
 
-    private float totalPrice;
-    private float totalQuantity;
+    private float totalPrice = 0;
+    private int totalQuantity = 0;
     private ArrayList<CartItem> cartItems;
 
     public Cart() {
@@ -18,6 +18,7 @@ public class Cart {
     }
 
     public float getTotalPrice() {
+        this.totalPrice = 0;
         for (CartItem cartItem : this.cartItems) {
             this.totalPrice = this.totalPrice + cartItem.getSubTotal();
         }
@@ -25,6 +26,7 @@ public class Cart {
     }
 
     public float getTotalQuantity() {
+        this.totalQuantity = 0;
         for (CartItem cartItem : this.cartItems) {
             this.totalQuantity = this.totalQuantity + cartItem.getQuantity();
         }
@@ -48,9 +50,10 @@ public class Cart {
         if (cartItem == null) {
             cartItem = new CartItem(product, quantity);
             this.cartItems.add(cartItem);
+        }else {
+            this.updateProduct(product, cartItem.getQuantity() + quantity);
         }
 
-        this.updateProduct(product, cartItem.getQuantity() + quantity);
     }
 
     public void updateProduct(Product product, int quantity) {
@@ -58,8 +61,10 @@ public class Cart {
         assert cartItem != null : "Vide";
         if (quantity <= 0) {
             this.cartItems.remove(cartItem);
+        }else {
+            cartItem.setQuantity(quantity);
         }
-        cartItem.setQuantity(quantity);
+
 
     }
 
@@ -79,5 +84,12 @@ public class Cart {
         return null;
     }
 
-
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "totalPrice=" + this.getTotalPrice() +
+                ", totalQuantity=" + this.getTotalQuantity() +
+                ", cartItems=" + this.getCartItems() +
+                '}';
+    }
 }

@@ -25,6 +25,6 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void removeCurrentCart() {
-        this.httpSessionFactory.getObject().removeAttribute("cart");
+        this.httpSessionFactory.getObject().setAttribute("cart",null);
     }
 }

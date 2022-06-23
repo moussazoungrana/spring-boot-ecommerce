@@ -147,4 +147,24 @@ public class Product {
             this.media.add(media);
         }
     }
+
+    public String coverUrl() {
+        return this.media.get(1).getFullPath();
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", slug='" + slug + '\'' +
+                ", sku='" + sku + '\'' +
+                ", description='" + description + '\'' +
+                ", active=" + active +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", categories=" + categories +
+                ", media=" + media +
+                '}';
+    }
 }
