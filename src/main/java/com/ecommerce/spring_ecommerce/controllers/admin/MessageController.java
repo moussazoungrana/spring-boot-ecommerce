@@ -27,4 +27,10 @@ public class MessageController {
         model.addAttribute("message", message);
         return "admin/messages/show";
     }
+
+    @GetMapping(value = "/{id}/delete")
+    public String delete(Model model, @PathVariable long id) {
+        messageService.deleteMessageById(id);
+        return "admin/messages/index";
+    }
 }

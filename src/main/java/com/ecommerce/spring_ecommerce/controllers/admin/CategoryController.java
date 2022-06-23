@@ -49,5 +49,12 @@ public class CategoryController {
     }
 
 
+    @GetMapping(value = "/{id}/delete")
+    public String delete(Model model, @PathVariable long id) {
+        categoryService.deleteCategoryById(id);
+        return "admin/categories/index";
+    }
+
+
 
 }

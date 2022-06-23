@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Boolean deleteUser(Long id) {
+    public Boolean deleteUserById(Long id) {
         if (this.findUserById(id) == null) {
             return false;
         }

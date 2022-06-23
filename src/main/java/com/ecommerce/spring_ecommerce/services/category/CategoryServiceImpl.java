@@ -40,7 +40,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Boolean deleteCategory(Long id) {
+    public Boolean deleteCategoryById(Long id) {
         if (this.findCategoryById(id) == null) {
             return false;
         }

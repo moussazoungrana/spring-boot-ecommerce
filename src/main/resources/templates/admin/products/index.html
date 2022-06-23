@@ -63,7 +63,7 @@
                                     <div class="btn-group" role="group" aria-label="Second group">
                                         <a th:href="@{'/admin/products/'+${product.getId()}+'/edit'}"
                                            class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0);"
+                                        <a th:href="@{'/admin/products/'+${product.getId()}+'/delete'}"
                                            onclick="return confirm('Voulez vous vraiment supprimer cet enregistrement ?')"
                                            class="btn btn-sm btn-danger">
                                             <i class="fa fa-trash"></i>

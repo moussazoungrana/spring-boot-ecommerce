@@ -44,4 +44,10 @@ public class CouponController {
         model.addAttribute("coupon", coupon);
         return "admin/coupons/edit";
     }
+
+    @GetMapping(value = "/{id}/delete")
+    public String delete(Model model, @PathVariable long id) {
+        couponService.deleteCouponById(id);
+        return "admin/coupons/index";
+    }
 }

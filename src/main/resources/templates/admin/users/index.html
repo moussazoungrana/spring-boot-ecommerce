@@ -52,18 +52,13 @@
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
                                         <a th:href="@{'/admin/users/'+${user.getId()}+'/edit'}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0);"
-                                           onclick="if (confirm('Voulez vous vraiment supprimer cet enregistrement ?'))
-                                               {document.getElementById('delete-user-').submit();} else {return false;}"
+                                        <a th:href="@{'/admin/users/'+${user.getId()}+'/delete'}"
+                                           onclick="return confirm('Voulez vous vraiment supprimer cet enregistrement ?')"
                                            class="btn btn-sm btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action=""
-                                          method="POST"
-                                          id="delete-user-" class="d-none">
 
-                                    </form>
                                 </td>
                             </tr>
 

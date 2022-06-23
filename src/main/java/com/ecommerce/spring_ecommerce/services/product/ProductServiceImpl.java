@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(product);
     }
 
-    public Boolean deleteProduct(Long id) {
+    public Boolean deleteProductById(Long id) {
         if (this.findProductById(id) == null) {
             return false;
         }

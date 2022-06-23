@@ -46,5 +46,11 @@ public class UserController {
         return "admin/users/edit";
     }
 
+    @GetMapping(value = "/{id}/delete")
+    public String delete(Model model, @PathVariable long id) {
+        userService.deleteUserById(id);
+        return "admin/users/index";
+    }
+
 
 }

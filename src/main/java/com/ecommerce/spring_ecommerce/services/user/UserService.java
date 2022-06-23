@@ -14,5 +14,5 @@ public interface UserService {
     public User updateUser(User user);
 
 
-    public Boolean deleteUser(Long id);
+    public Boolean deleteUserById(Long id);
 }

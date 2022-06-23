@@ -32,7 +32,7 @@ public class Product {
     @Column(nullable = false)
     private int quantity;
 
-    @ManyToMany(targetEntity = Category.class, cascade = CascadeType.ALL)
+    @ManyToMany(targetEntity = Category.class, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "category_products",
             joinColumns = @JoinColumn(name = "product_id"),
@@ -143,7 +143,8 @@ public class Product {
     }
 
     public void addMedia(Media media) {
-        if (this.media.contains(media)) return;
-        this.media.add(media);
+        if (!this.media.contains(media)) {
+            this.media.add(media);
+        }
     }
 }
