@@ -23,6 +23,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public Product findProductBySlug(String slug) {
+        return productRepository.findBySlug(slug);
+    }
+
     public Product saveProduct(Product product) {
         Product saveProduct = productRepository.save(product);
         Slugify slg = new Slugify();

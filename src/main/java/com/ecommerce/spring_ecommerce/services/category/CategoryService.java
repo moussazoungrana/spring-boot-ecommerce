@@ -12,6 +12,8 @@ public interface CategoryService {
 
     public Category findCategoryById(Long id);
 
+    public Category findCategoryBySlug(String slug);
+
     public Category saveCategory(Category category);
 
     public Category updateCategory(Category category);

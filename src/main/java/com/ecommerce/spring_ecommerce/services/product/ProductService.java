@@ -11,6 +11,8 @@ public interface ProductService {
 
     public Product findProductById(Long id);
 
+    public Product findProductBySlug(String slug);
+
     public Product saveProduct(Product product);
 
     public Product updateProduct(Product product);
