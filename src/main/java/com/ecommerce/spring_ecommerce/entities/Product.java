@@ -149,7 +149,10 @@ public class Product {
     }
 
     public String coverUrl() {
-        return this.media.get(1).getFullPath();
+        if (this.media.isEmpty()){
+            return "";
+        }
+        return this.media.get(0).getFullPath();
     }
 
     @Override
