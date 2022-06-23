@@ -3,7 +3,6 @@ package com.ecommerce.spring_ecommerce.controllers.admin;
 import com.ecommerce.spring_ecommerce.services.product.ProductService;
 import com.ecommerce.spring_ecommerce.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +19,8 @@ public class DashboardController {
     @Autowired
     protected UserService userService;
 
-    @Autowired
-    protected ResourceLoader resourceLoader;
-
     @RequestMapping(value = "/admin")
     public String index(Model model) throws IOException {
-        URL resource = this.getClass().getResource("");
-        System.out.println(resource);
         model.addAttribute("totalProduct", productService.getAll().size());
         model.addAttribute("totalUser", userService.getAll().size());
         return "admin/dashboard/index";
