@@ -55,6 +55,23 @@
                                    multiple>
                         </div>
 
+                        <hr>
+                        <div class="row mb-1">
+
+                            <div  th:each="media : ${product.getMedia()}"  class="col-md-3" >
+                                <div class="card">
+                                    <div class="card-body">
+                                        <img th:src="@{'/uploads/products/'+${media.getPath()}}" id="brandLogo" class="img-fluid" alt="img">
+                                        <a class="card-link float-right text-danger" href="">
+                                            <i class="fa fa-fw fa-lg fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
 
                         <div class="row">
                             <div class="col-md-12">

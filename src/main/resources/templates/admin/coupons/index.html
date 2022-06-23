@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/admin/layouts/app"
+      lang="fr">
+<body>
+<th:block layout:fragment="content">
+    <div class="app-title">
+        <div>
+            <h1><i class="fas fa-tags"></i> Catégories</h1>
+            <p>Liste de toutes les catégories</p>
+        </div>
+        <a th:href="@{/admin/categories/create}" class="btn btn-primary pull-right">Ajouter une catégorie</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+
+                <div class="tile-body">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-hover table-bordered" id="sampleTable">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>parent</th>
+                                <th class="text-center">active</th>
+                                <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr th:each="category : ${categories}">
+                                <td th:text="${category.getId()}"></td>
+                                <td th:text="${category.getName()}"></td>
+                                <td>
+                                    <span th:if="${category.getParent() != null}" th:text="${category.getParent().getName()}"></span>
+                                    <span th:unless="${category.getParent()}">Principale</span>
+                                </td>
+
+
+                                <td class="text-center">
+
+                                    <span th:text="${category.isActive()? 'actif':'inactif'}" th:class="${category.isActive()? 'badge badge-info':'badge badge-danger'}"></span>
+
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group" aria-label="Second group">
+                                        <a th:href="@{'/admin/categories/'+${category.getId()}+'/edit'}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a href="javascript:void(0);"
+                                           onclick="if (confirm('Voulez vous vraiment supprimer cet enregistrement ?'))
+                                               {document.getElementById('delete-product-').submit();} else {return false;}"
+                                           class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                    <form action=""
+                                          method="POST"
+                                          id="delete-product-" class="d-none">
+
+                                    </form>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="extra-script">
+    <script type="text/javascript" th:src=" @{/admin/js/plugins/jquery.dataTables.min.js} "></script>
+    <script type="text/javascript" th:src=" @{/admin/js/plugins/dataTables.bootstrap.min.js} "></script>
+    <script type="text/javascript" th:src=" @{/admin/js/plugins/sweetalert.min.js} "></script>
+
+    <script type="text/javascript">
+        $('#sampleTable').DataTable({
+            language: {
+                processing:     "Traitement en cours...",
+                search:         "Rechercher&nbsp;:",
+                lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
+                info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+                infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+                infoPostFix:    "",
+                loadingRecords: "Chargement en cours...",
+                zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+                emptyTable:     "Aucune donnée disponible dans le tableau",
+                paginate: {
+                    first:      "Premier",
+                    previous:   "Pr&eacute;c&eacute;dent",
+                    next:       "Suivant",
+                    last:       "Dernier"
+                },
+                aria: {
+                    sortAscending:  ": activer pour trier la colonne par ordre croissant",
+                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                }
+            }
+        });
+    </script>
+</th:block>
+
+</body>
+</html>

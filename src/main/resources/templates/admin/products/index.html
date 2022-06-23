@@ -64,19 +64,12 @@
                                         <a th:href="@{'/admin/products/'+${product.getId()}+'/edit'}"
                                            class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                         <a href="javascript:void(0);"
-
-                                           onclick="if (confirm('Voulez vous vraiment supprimer cet enregistrement ?'))
-                                               {document.getElementById('delete-product-').submit();} else {return false;}"
+                                           onclick="return confirm('Voulez vous vraiment supprimer cet enregistrement ?')"
                                            class="btn btn-sm btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action=""
-                                          method="POST"
-                                          th:id="'delete-product-'+${product.getId()}"
-                                             class="d-none">
 
-                                    </form>
                                 </td>
                             </tr>
 

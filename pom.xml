@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ecommerce</groupId>
-    <artifactId>java_ecommerce</artifactId>
+    <artifactId>spring_ecommerce</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>java_ecommerce</name>
-    <description>java_ecommerce</description>
+    <name>spring_ecommerce</name>
+    <description>spring_ecommerce</description>
     <properties>
         <java.version>11</java.version>
     </properties>
