@@ -18,7 +18,7 @@
                             <!-- Start Header Logo -->
                             <div class="header-logo">
                                 <div class="logo">
-                                    <a href="index.html"><img src="/frontend/assets/images/logo/logo_white.png" th:src="@{/frontend/assets/images/logo/logo_white.png}"  alt=""></a>
+                                    <a th:href="@{/}"><img src="/frontend/assets/images/logo/logo_white.png" th:src="@{/frontend/assets/images/logo/logo_white.png}"  alt=""></a>
                                 </div>
                             </div>
                             <!-- End Header Logo -->
@@ -28,7 +28,7 @@
                                 <nav>
                                     <ul>
                                         <li>
-                                            <a href="index.html">HOME</a>
+                                            <a th:href="@{/}">HOME</a>
                                         </li>
                                         <li class="has-dropdown has-megaitem">
                                             <a href="shop-grid-sidebar-left.html">Shop</a>
@@ -91,9 +91,9 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#offcanvas-add-cart" class="offcanvas-toggle">
+                                    <a th:href="@{/cart}" class="">
                                         <i class="icon-bag"></i>
-                                        <span class="item-count">3</span>
+                                        <span class="item-count" th:text="${!#session.isNew() ? #session.getAttribute('cart').getTotalQuantity() : 0}"></span>
                                     </a>
                                 </li>
                                 <li>
@@ -125,7 +125,7 @@
                     <div class="mobile-header-left">
                         <ul class="mobile-menu-logo">
                             <li>
-                                <a href="index.html">
+                                <a th:href="@{/}">
                                     <div class="logo">
                                         <img  th:src="@{/frontend/assets/images/logo/logo_white.png}"   src="/frontend/assets/images/logo/logo_white.png" alt="">
                                     </div>

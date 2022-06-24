@@ -50,7 +50,6 @@ public class ProductController {
     @PostMapping("/store")
     public String store(@ModelAttribute Product product, @RequestParam(required = false) String active,
                         @RequestParam(required = false) List<MultipartFile> files) {
-        System.out.println(files);
         product.setActive(active != null);
         Product saveProduct = productService.saveProduct(product);
         for (MultipartFile file : files){

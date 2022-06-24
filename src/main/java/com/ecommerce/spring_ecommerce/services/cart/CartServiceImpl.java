@@ -1,5 +1,6 @@
 package com.ecommerce.spring_ecommerce.services.cart;
 
+import com.ecommerce.spring_ecommerce.entities.Product;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,5 +27,15 @@ public class CartServiceImpl implements CartService {
     @Override
     public void removeCurrentCart() {
         this.httpSessionFactory.getObject().setAttribute("cart",null);
+    }
+
+    @Override
+    public void add(Product product, int quantity) {
+        Cart cart = (Cart) this.httpSessionFactory.getObject().getAttribute("cart");
+        if (cart == null) {
+            cart = new Cart();
+            cart.addProduct(product,quantity);
+            this.httpSessionFactory.getObject().setAttribute("cart", cart);
+        }
     }
 }

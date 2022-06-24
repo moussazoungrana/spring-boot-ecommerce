@@ -81,22 +81,27 @@
                             <!-- Product Variable Single Item -->
                             <div class="variable-single-item">
                                 <div class="product-stock"> <span class="product-stock-in"><i
-                                        class="ion-checkmark-circled"></i></span> <span th:text="${product.getQuantity()}"></span> IN STOCK
+                                        class="ion-checkmark-circled"></i></span> <span
+                                        th:text="${product.getQuantity()}"></span> IN STOCK
                                 </div>
                             </div>
                             <!-- Product Variable Single Item -->
                             <div class="d-flex align-items-center ">
-                                <div class="variable-single-item ">
-                                    <span>Quantity</span>
-                                    <div class="product-variable-quantity">
-                                        <input min="1" max="100" value="1" type="number">
+                                <form th:action="@{/cart/add}" method="post">
+                                    <input type="hidden" name="id" th:value="${product.getId()}">
+                                    <div class="variable-single-item ">
+                                        <span>Quantity</span>
+                                        <div class="product-variable-quantity">
+                                            <input name="quantity" min="1" max="100" value="1" type="number">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="product-add-to-cart-btn">
-                                    <a href="#" class="btn btn-block btn-lg btn-black-default-hover"
-                                       data-bs-toggle="modal" data-bs-target="#modalAddcart">+ Add To Cart</a>
-                                </div>
+                                    <div class="product-add-to-cart-btn">
+                                        <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To
+                                            Cart</button>
+                                    </div>
+                                </form>
+
                             </div>
                             <!-- Start  Product Details Meta Area-->
                         </div> <!-- End Product Variable Area -->

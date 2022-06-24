@@ -30,7 +30,7 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(cascade=CascadeType.ALL,mappedBy="order")
+    @OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="order")
     private List<OrderProduct> orderProducts;
 
     public Order(float totalPrice, String paymentMethod, String deliveryAddress, int status, String message, User user) {

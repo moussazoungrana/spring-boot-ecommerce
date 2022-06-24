@@ -40,7 +40,7 @@ public class Product {
     )
     private List<Category> categories;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "product")
     private List<Media> media;
 
 
@@ -131,7 +131,7 @@ public class Product {
     }
 
     public void addCategory(Category category) {
-        this.categories.add(category);
+        this.getCategories().add(category);
     }
 
     public List<Media> getMedia() {
@@ -143,16 +143,16 @@ public class Product {
     }
 
     public void addMedia(Media media) {
-        if (!this.media.contains(media)) {
-            this.media.add(media);
+        if (!this.getMedia().contains(media)) {
+            this.getMedia().add(media);
         }
     }
 
     public String coverUrl() {
-        if (this.media.isEmpty()){
+        if (this.getMedia().isEmpty()) {
             return "";
         }
-        return this.media.get(0).getFullPath();
+        return this.getMedia().get(0).getFullPath();
     }
 
     @Override

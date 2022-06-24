@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/frontend/layouts/app"
+      lang="fr">
+<body>
+<th:block layout:fragment="content">
+    <!-- ...:::: Start Breadcrumb Section:::... -->
+    <div class="breadcrumb-section breadcrumb-bg-color--golden">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="breadcrumb-title">CART</h3>
+                        <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                            <nav aria-label="breadcrumb">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Pages</a></li>
+                                    <li class="active" aria-current="page">CART</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ...:::: End Breadcrumb Section:::... -->
+
+    <!-- ...:::: Start Cart Section:::... -->
+    <div class="cart-section">
+        <!-- Start Cart Table -->
+        <div class="cart-table-wrapper" data-aos="fade-up" data-aos-delay="0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="table_page table-responsive">
+                                <table>
+                                    <!-- Start Cart Table Head -->
+                                    <thead>
+                                    <tr>
+                                        <th class="product_remove">Delete</th>
+                                        <th class="product_thumb">Image</th>
+                                        <th class="product_name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product_quantity">Quantity</th>
+                                        <th class="product_total">Total</th>
+                                    </tr>
+                                    </thead> <!-- End Cart Table Head -->
+                                    <tbody>
+                                    <!-- Start Cart Single Item-->
+
+                                    <tr th:each="item : ${cart.getCartItems()}">
+                                        <td class="product_remove"><a th:href="@{'/cart/'+${item.getCode()}+'/remove'}"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                        <td class="product_thumb"><a th:href="@{'/articles/'+ ${item.getProduct().getSlug()}}"><img
+                                                th:src="@{${item.getProduct().getMedia().get(0).getFullPath()}}"
+                                                src="/frontend/assets/images/product/default/home-3/default-2.jpg"
+                                                alt=""></a></td>
+                                        <td class="product_name"><a th:href="@{'/articles/'+ ${item.getProduct().getSlug()}}" th:text="${item.getProduct().getName()}"></a></td>
+                                        <td class="product-price" th:text="${item.getProduct().getPrice()}"></td>
+                                        <td class="product_quantity"><label>Quantity</label> <input min="1" th:value="${item.getQuantity()}"
+                                                                                                    max="100"  type="number"></td>
+                                        <td class="product_total" th:text="${item.getSubTotal()}"></td>
+                                    </tr> <!-- End Cart Single Item-->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart_submit">
+                                <button class="btn btn-md btn-golden" type="submit">update cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Cart Table -->
+
+        <!-- Start Coupon Start -->
+        <div class="coupon_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="coupon_code left" data-aos="fade-up" data-aos-delay="200">
+                            <h3>Coupon</h3>
+                            <div class="coupon_inner">
+                                <p>Enter your coupon code if you have one.</p>
+                                <input class="mb-2" placeholder="Coupon code" type="text">
+                                <button type="submit" class="btn btn-md btn-golden">Apply coupon</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="coupon_code right" data-aos="fade-up" data-aos-delay="400">
+                            <h3>Cart Totals</h3>
+                            <div class="coupon_inner">
+                                <div class="cart_subtotal">
+                                    <p>Subtotal</p>
+                                    <p class="cart_amount" th:text="${cart.getTotalPrice()}">$215.00</p>
+                                </div>
+
+                                <div class="cart_subtotal">
+                                    <p>Total</p>
+                                    <p class="cart_amount" th:text="${cart.getTotalPrice()}">$215.00</p>
+                                </div>
+                                <div class="checkout_btn">
+                                    <a href="#" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Coupon Start -->
+    </div> <!-- ...:::: End Cart Section:::... -->
+
+</th:block>
+
+
+</body>
+</html>

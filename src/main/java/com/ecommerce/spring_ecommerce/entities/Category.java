@@ -22,14 +22,14 @@ public class Category {
 
     private boolean active = true;
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "categories")
     private List<Product> products;
 
     @ManyToOne(targetEntity = Category.class)
     @JoinColumn(name = "parent_id", nullable = true)
     private Category parent;
 
-    @OneToMany(targetEntity = Category.class, mappedBy = "parent")
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Category.class, mappedBy = "parent")
     private List<Category> children;
 
 
@@ -109,7 +109,7 @@ public class Category {
     }
 
     public void setParent(Category parent) {
-        if (parent != this ) {
+        if (parent != this) {
             this.parent = parent;
         }
     }
