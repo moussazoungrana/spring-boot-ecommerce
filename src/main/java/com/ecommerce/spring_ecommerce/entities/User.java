@@ -29,8 +29,6 @@ public class User {
     @Column(name = "is_admin", nullable = false)
     private Boolean is_admin = false;
 
-    @OneToMany(cascade=CascadeType.ALL,mappedBy="user")
-    private List<Order> orders;
 
     public User(String firstname, String lastname, String email, String password, String address, String phone, Boolean is_admin) {
         this.firstname = firstname;
@@ -112,11 +110,4 @@ public class User {
         this.is_admin = is_admin;
     }
 
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
 }

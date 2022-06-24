@@ -105,7 +105,7 @@
                                     <p class="cart_amount" th:text="${cart.getTotalPrice()}">$215.00</p>
                                 </div>
                                 <div class="checkout_btn">
-                                    <a href="#" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                                    <a th:href="@{/checkout}" class="btn btn-md btn-golden">Proceed to Checkout</a>
                                 </div>
                             </div>
                         </div>

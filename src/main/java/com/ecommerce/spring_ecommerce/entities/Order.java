@@ -11,35 +11,38 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "customer_name", nullable = false)
+    private String customerName;
+
+    @Column(name = "customer_email", nullable = false, unique = true)
+    private String customerEmail;
+
     @Column(nullable = false)
     private float totalPrice;
 
-    @Column(nullable = false)
-    private String paymentMethod;
+    @Column(nullable = true)
+    private String paymentMethod= "livraison";
 
     @Column(nullable = false)
     private String deliveryAddress;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int status = 1;
 
     @Column(nullable = true)
     private String message;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User user;
-
     @OneToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL,mappedBy="order")
     private List<OrderProduct> orderProducts;
 
-    public Order(float totalPrice, String paymentMethod, String deliveryAddress, int status, String message, User user) {
+    public Order(String customerName, String customerEmail, float totalPrice, String paymentMethod, String deliveryAddress, int status, String message) {
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
         this.totalPrice = totalPrice;
         this.paymentMethod = paymentMethod;
         this.deliveryAddress = deliveryAddress;
         this.status = status;
         this.message = message;
-        this.user = user;
     }
 
     public Order(){
@@ -52,6 +55,22 @@ public class Order {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
     public float getTotalPrice() {
@@ -92,14 +111,6 @@ public class Order {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public List<OrderProduct> getOrderProducts() {
